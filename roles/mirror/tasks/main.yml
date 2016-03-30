@@ -5,7 +5,7 @@
   yum:
     name: yum-utils
     state: present
-    
+
 - name: Enable http(s) ports
   firewalld:
     service: "{{ item }}"
@@ -46,6 +46,18 @@
     - nginx
     - createrepo
     - rsync
+
+- name: Copy nginx conf file
+  template:
+    src: default.conf.j2
+    dest: /etc/nginx/conf.d/default.conf
+  register: nginx_conf
+
+- name: Restart nginx if conf changed
+  service:
+    name: nginx
+    state: restarted
+  when: nginx_conf|changed
 
 - name: Enabling and starting nginx
   service:
