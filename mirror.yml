@@ -1,0 +1,4 @@
+- hosts: mirror
+  roles:
+    - common
+    - mirror

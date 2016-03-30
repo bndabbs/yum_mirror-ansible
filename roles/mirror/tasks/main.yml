@@ -1,0 +1,120 @@
+---
+# I always run this as the first task. It makes all subsequent YUM operations run much faster.
+# It's also a prerequisite for this playbook to have it installed.
+- name: Installing yum-utils
+  yum:
+    name: yum-utils
+    state: present
+    
+- name: Enable http(s) ports
+  firewalld:
+    service: "{{ item }}"
+    permanent: true
+    immediate: true
+    state: enabled
+  with_items:
+    - http
+    - https
+
+- name: Copy over repo files
+  template:
+    src: "{{ item }}.j2"
+    dest: /etc/yum.repos.d/{{ item }}
+  with_items:
+    - rhscl-v8314-epel-7-x86_64.repo
+    - rhscl-ruby193-epel-7-x86_64.repo
+    - docker.repo
+
+- name: Enabling additional repos in YUM
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
+    - http://fedorapeople.org/groups/katello/releases/yum/2.4/katello/RHEL/7Server/x86_64/katello-repos-latest.rpm
+    - http://yum.theforeman.org/releases/1.10/el7/x86_64/foreman-release.rpm
+    - http://yum.puppetlabs.com/puppetlabs-release-el-7.noarch.rpm
+    - epel-release
+    - centos-release-ovirt36
+    - centos-release-gluster37
+
+- name: Installing nginx and createrepo
+  yum:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - nginx
+    - createrepo
+    - rsync
+
+- name: Enabling and starting nginx
+  service:
+    name: nginx
+    state: started
+    enabled: true
+
+- name: create directories for repositories
+  file:
+    path: /usr/share/nginx/html/repos/centos/7/{{ item }}/
+    state: directory
+  with_items:
+    - os
+    - updates
+    - extras
+    - storage/gluster-37
+    - virt/ovirt-36
+    - virt/kvm-common
+    - epel
+    - docker
+    - rhscl/ruby193
+    - rhscl/v8314
+    - puppet/products
+    - puppet/dependencies
+    - katello
+    - katello-pulp
+    - katello-candlepin
+    - nginx
+
+- name: Sync repositories
+  command: >
+    reposync
+    -r {{ item.repo }}
+    -p /usr/share/nginx/html/repos/centos/7/{{ item.path }}/
+    --norepopath
+  with_items:
+    - { repo: 'base', path: 'os' }
+    - { repo: 'updates', path: 'updates' }
+    - { repo: 'extras', path: 'extras' }
+    - { repo: 'centos-gluster37', path: 'storage/gluster-37' }
+    - { repo: 'centos-ovirt36', path: 'virt/ovirt-36' }
+    - { repo: 'centos-qemu-ev', path: 'virt/kvm-common' }
+    - { repo: 'epel', path: 'epel' }
+    - { repo: 'dockerrepo', path: 'docker' }
+    - { repo: 'rhscl-ruby193-epel-7-x86_64', path: 'rhscl/ruby193' }
+    - { repo: 'rhscl-v8314-epel-7-x86_64', path: 'rhscl/v8314' }
+    - { repo: 'puppetlabs-products', path: 'puppet/products' }
+    - { repo: 'puppetlabs-deps', path: 'puppet/dependencies' }
+    - { repo: 'katello', path: 'katello' }
+    - { repo: 'katello-pulp', path: 'katello-pulp' }
+    - { repo: 'katello-candlepin', path: 'katello-candlepin' }
+
+- name: Update repo metadata
+  command: >
+    createrepo
+    --update /var/www/html/repos/centos/7/{{ item }}/
+  with_items:
+    - os
+    - updates
+    - extras
+    - storage/gluster-37
+    - virt/ovirt-36
+    - virt/kvm-common
+    - epel
+    - docker
+    - rhscl/ruby193
+    - rhscl/v8314
+    - puppet/products
+    - puppet/dependencies
+    - katello
+    - katello-pulp
+    - katello-candlepin
