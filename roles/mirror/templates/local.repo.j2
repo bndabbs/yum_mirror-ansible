@@ -1,0 +1,95 @@
+[os]
+name=CentOS - Base
+baseurl={{ nginx_url }}/os
+enabled=1
+gpgcheck=0
+
+[updates]
+name=CentOS - Updates
+baseurl={{ nginx_url }}/updates
+enabled=1
+gpgcheck=0
+
+[extras]
+name=CentOS - Extras
+baseurl={{ nginx_url }}/extras
+enabled=1
+gpgcheck=0
+
+[gluster-37]
+name=Storage - Gluster 3.7
+baseurl={{ nginx_url }}/storage/gluster-37
+enabled=1
+gpgcheck=0
+
+[ovirt-36]
+name=Virtualization - oVirt 3.6
+baseurl={{ nginx_url }}/virt/ovirt-36
+enabled=1
+gpgcheck=0
+
+[kvm-common]
+name=Virtualization - KVM-Common
+baseurl={{ nginx_url }}/virt/kvm-common
+enabled=1
+gpgcheck=0
+
+[epel]
+name=EPEL
+baseurl={{ nginx_url }}/epel
+enabled=1
+gpgcheck=0
+
+[docker]
+name=Docker
+baseurl={{ nginx_url }}/docker
+enabled=1
+gpgcheck=0
+
+[rhscl-ruby193]
+name=RHSCL - Ruby 193
+baseurl={{ nginx_url }}/rhscl/ruby193
+enabled=1
+gpgcheck=0
+
+[rhscl-v8314]
+name=RHSCL - v8314
+baseurl={{ nginx_url }}/rhscl/v8314
+enabled=1
+gpgcheck=0
+
+[puppet-products]
+name=Puppet - Products
+baseurl={{ nginx_url }}/puppet/products
+enabled=1
+gpgcheck=0
+
+[puppet-dependencies]
+name=Puppet - Dependencies
+baseurl={{ nginx_url }}/puppet/dependencies
+enabled=1
+gpgcheck=0
+
+[katello]
+name=Katello
+baseurl={{ nginx_url }}/katello
+enabled=1
+gpgcheck=0
+
+[katello-pulp]
+name=Pulp
+baseurl={{ nginx_url }}/katello-pulp
+enabled=1
+gpgcheck=0
+
+[katello-candlepin]
+name=Candlepin
+baseurl={{ nginx_url }}/katello-candlepin
+enabled=1
+gpgcheck=0
+
+[nginx]
+name=NGINX
+baseurl={{ nginx_url }}/nginx
+enabled=1
+gpgcheck=0

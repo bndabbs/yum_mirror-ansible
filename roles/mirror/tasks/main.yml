@@ -131,3 +131,8 @@
     - katello
     - katello-pulp
     - katello-candlepin
+
+- name: Pushing local.repo to nginx
+  template:
+    src: local.rep.j2
+    dest: "{{ centos7_path }}/local.repo"
