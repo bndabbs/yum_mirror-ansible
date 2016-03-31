@@ -67,7 +67,7 @@
 
 - name: create directories for repositories
   file:
-    path: /usr/share/nginx/html/repos/centos/7/{{ item }}/
+    path: {{ centos7_path }}/{{ item }}/
     state: directory
   with_items:
     - os
@@ -89,9 +89,9 @@
 
 - name: Sync repositories
   command: >
-    reposync
+    reposync -n
     -r {{ item.repo }}
-    -p /usr/share/nginx/html/repos/centos/7/{{ item.path }}/
+    -p {{ centos7_path }}/{{ item.path }}/
     --norepopath
   with_items:
     - { repo: 'base', path: 'os' }
@@ -100,7 +100,6 @@
     - { repo: 'centos-gluster37', path: 'storage/gluster-37' }
     - { repo: 'centos-ovirt36', path: 'virt/ovirt-36' }
     - { repo: 'centos-qemu-ev', path: 'virt/kvm-common' }
-    - { repo: 'epel', path: 'epel' }
     - { repo: 'dockerrepo', path: 'docker' }
     - { repo: 'rhscl-ruby193-epel-7-x86_64', path: 'rhscl/ruby193' }
     - { repo: 'rhscl-v8314-epel-7-x86_64', path: 'rhscl/v8314' }
@@ -110,11 +109,12 @@
     - { repo: 'katello-pulp', path: 'katello-pulp' }
     - { repo: 'katello-candlepin', path: 'katello-candlepin' }
     - { repo: 'nginx', path: 'nginx' }
+    - { repo: 'epel', path: 'epel' }
 
 - name: Update repo metadata
   command: >
     createrepo
-    --update /var/www/html/repos/centos/7/{{ item }}/
+    --update {{ centos7_path }}/{{ item }}/
   with_items:
     - os
     - updates

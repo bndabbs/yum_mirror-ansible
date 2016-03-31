@@ -1,0 +1,2 @@
+base_path: /usr/share/nginx/html/repos/
+centos7_path: "{{ base_path }}/centos/7"
