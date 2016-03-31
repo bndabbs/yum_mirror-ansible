@@ -109,6 +109,7 @@
     - { repo: 'katello', path: 'katello' }
     - { repo: 'katello-pulp', path: 'katello-pulp' }
     - { repo: 'katello-candlepin', path: 'katello-candlepin' }
+    - { repo: 'nginx', path: 'nginx' }
 
 - name: Update repo metadata
   command: >
