@@ -67,7 +67,7 @@
 
 - name: create directories for repositories
   file:
-    path: {{ centos7_path }}/{{ item }}/
+    path: "{{ centos7_path }}/{{ item }}/"
     state: directory
   with_items:
     - os
@@ -134,5 +134,5 @@
 
 - name: Pushing local.repo to nginx
   template:
-    src: local.rep.j2
+    src: local.repo.j2
     dest: "{{ centos7_path }}/local.repo"
