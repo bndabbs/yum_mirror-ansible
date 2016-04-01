@@ -3,115 +3,130 @@ name=CentOS - Base
 baseurl={{ nginx_url }}/os
 enabled=1
 gpgcheck=0
+priority=20
 
 [updates-local]
 name=CentOS - Updates
 baseurl={{ nginx_url }}/updates
 enabled=1
 gpgcheck=0
+priority=20
 
 [extras-local]
 name=CentOS - Extras
 baseurl={{ nginx_url }}/extras
 enabled=1
 gpgcheck=0
+priority=20
 
 [gluster-37-local]
 name=Storage - Gluster 3.7
 baseurl={{ nginx_url }}/storage/gluster-37
 enabled=1
 gpgcheck=0
+priority=20
 
 [ovirt-36-local]
 name=Virtualization - oVirt 3.6
 baseurl={{ nginx_url }}/virt/ovirt-36
 enabled=1
 gpgcheck=0
+priority=20
 
 [kvm-common-local]
 name=Virtualization - KVM-Common
 baseurl={{ nginx_url }}/virt/kvm-common
 enabled=1
 gpgcheck=0
+priority=20
 
 [epel-local]
 name=EPEL
 baseurl={{ nginx_url }}/epel
 enabled=1
 gpgcheck=0
+priority=20
 
 [docker-local]
 name=Docker
 baseurl={{ nginx_url }}/docker
 enabled=1
 gpgcheck=0
+priority=20
 
 [rhscl-ruby193-local]
 name=RHSCL - Ruby 193
 baseurl={{ nginx_url }}/rhscl/ruby193
 enabled=1
 gpgcheck=0
+priority=20
 
 [rhscl-v8314-local]
 name=RHSCL - v8314
 baseurl={{ nginx_url }}/rhscl/v8314
 enabled=1
 gpgcheck=0
+priority=20
 
 [puppet-products-local]
 name=Puppet - Products
 baseurl={{ nginx_url }}/puppet/products
 enabled=1
 gpgcheck=0
+priority=20
 
 [puppet-dependencies-local]
 name=Puppet - Dependencies
 baseurl={{ nginx_url }}/puppet/dependencies
 enabled=1
 gpgcheck=0
+priority=20
 
 [katello-local]
 name=Katello
 baseurl={{ nginx_url }}/katello
 enabled=1
 gpgcheck=0
-priority=1
+priority=10
 
 [katello-client-local]
 name=Katello Client
 baseurl={{ nginx_url }}/katello-client
 enabled=1
 gpgcheck=0
-priority=1
+priority=10
 
 [katello-pulp-local]
 name=Pulp
 baseurl={{ nginx_url }}/katello-pulp
 enabled=1
 gpgcheck=0
-priority=1
+priority=10
 
 [katello-candlepin-local]
 name=Candlepin
 baseurl={{ nginx_url }}/katello-candlepin
 enabled=1
 gpgcheck=0
-priority=1
+priority=10
 
 [nginx-local]
 name=NGINX
 baseurl={{ nginx_url }}/nginx
 enabled=1
 gpgcheck=0
+priority=20
 
 [foreman-local]
 name=Foreman 1.10
 baseurl={{ nginx_url }}/foreman
 enabled=1
 gpgcheck=0
+priority=20
 
 [foreman-plugins-local]
 name=Foreman plugins 1.10
 baseurl={{ nginx_url }}/foreman-plugins
 enabled=1
 gpgcheck=0
+priority=20
