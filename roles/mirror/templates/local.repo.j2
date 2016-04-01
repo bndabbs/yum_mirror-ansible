@@ -93,3 +93,15 @@ name=NGINX
 baseurl={{ nginx_url }}/nginx
 enabled=1
 gpgcheck=0
+
+[foreman]
+name=Foreman 1.10
+baseurl={{ nginx_url }}/foreman
+enabled=1
+gpgcheck=0
+
+[foreman-plugins]
+name=Foreman plugins 1.10
+baseurl={{ nginx_url }}/foreman
+enabled=1
+gpgcheck=0

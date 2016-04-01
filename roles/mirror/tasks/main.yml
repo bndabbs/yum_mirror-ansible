@@ -6,7 +6,7 @@
     name: yum-utils
     state: present
 
-- name: Enable http(s) ports
+- name: Enable http ports
   firewalld:
     service: "{{ item }}"
     permanent: true
@@ -14,7 +14,6 @@
     state: enabled
   with_items:
     - http
-    - https
 
 - name: Copy over repo files
   template:
@@ -86,6 +85,8 @@
     - katello-pulp
     - katello-candlepin
     - nginx
+    - foreman
+    - foreman-plugins
 
 - name: Sync repositories
   command: >
@@ -110,6 +111,8 @@
     - { repo: 'katello-candlepin', path: 'katello-candlepin' }
     - { repo: 'nginx', path: 'nginx' }
     - { repo: 'epel', path: 'epel' }
+    - { repo: 'foreman', path: 'foreman' }
+    - { repo: 'foreman-plugins', path: 'foreman-plugins' }
 
 - name: Update repo metadata
   command: >
@@ -131,6 +134,9 @@
     - katello
     - katello-pulp
     - katello-candlepin
+    - nginx
+    - foreman
+    - foreman-plugins
 
 - name: Pushing local.repo to nginx
   template:
