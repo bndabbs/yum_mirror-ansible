@@ -82,6 +82,7 @@
     - puppet/products
     - puppet/dependencies
     - katello
+    - katello-client
     - katello-pulp
     - katello-candlepin
     - nginx
@@ -107,6 +108,7 @@
     - { repo: 'puppetlabs-products', path: 'puppet/products' }
     - { repo: 'puppetlabs-deps', path: 'puppet/dependencies' }
     - { repo: 'katello', path: 'katello' }
+    - { repo: 'katello-client', path: 'katello-client' }
     - { repo: 'katello-pulp', path: 'katello-pulp' }
     - { repo: 'katello-candlepin', path: 'katello-candlepin' }
     - { repo: 'nginx', path: 'nginx' }
@@ -132,6 +134,7 @@
     - puppet/products
     - puppet/dependencies
     - katello
+    - katello-client
     - katello-pulp
     - katello-candlepin
     - nginx

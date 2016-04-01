@@ -75,18 +75,28 @@ name=Katello
 baseurl={{ nginx_url }}/katello
 enabled=1
 gpgcheck=0
+priority=1
+
+[katello-client]
+name=Katello Client
+baseurl={{ nginx_url }}/katello-client
+enabled=1
+gpgcheck=0
+priority=1
 
 [katello-pulp]
 name=Pulp
 baseurl={{ nginx_url }}/katello-pulp
 enabled=1
 gpgcheck=0
+priority=1
 
 [katello-candlepin]
 name=Candlepin
 baseurl={{ nginx_url }}/katello-candlepin
 enabled=1
 gpgcheck=0
+priority=1
 
 [nginx]
 name=NGINX
