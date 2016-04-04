@@ -9,11 +9,12 @@ You will need to edit `inventory/local.yml` to match your environment and then r
 ansible-playbook mirror.yml -i inventory/local.yml -b
 ```
 
-Once the playbook has finished, you can disable all the current repos and then curl a repo file from nginx to enable all the things:
+Once the playbook has finished, you can curl a repo file from nginx to enable all the things:
 
 ```
 cd /etc/yum.repos.d/
-repos=$(yum -v repolist |grep Repo-id |awk '{print $3}'|awk -F/ '{print $1}')
-for i in "${repos[@]}"; do yum-config-manager --disable $i; done
 curl -O http://nginx_ip/centos/7/local.repo
+yum install yum-priorities
 ```
+
+**Note:** *The provided repo file uses priorities to give the local ones precedence over the online ones.*
