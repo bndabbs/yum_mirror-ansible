@@ -23,6 +23,7 @@
     - rhscl-v8314-epel-7-x86_64.repo
     - rhscl-ruby193-epel-7-x86_64.repo
     - docker.repo
+    - delorean.repo
 
 - name: Enabling additional repos in YUM
   yum:
@@ -88,6 +89,8 @@
     - nginx
     - foreman
     - foreman-plugins
+    - delorean
+    - delorean-deps
 
 - name: Sync repositories
   command: >
@@ -115,6 +118,8 @@
     - { repo: 'epel', path: 'epel' }
     - { repo: 'foreman', path: 'foreman' }
     - { repo: 'foreman-plugins', path: 'foreman-plugins' }
+    - { repo: 'delorean', path: 'delorean' }
+    - { repo: 'delorean-deps', path: 'delorean-deps' }
 
 - name: Update repo metadata
   command: >
@@ -140,6 +145,8 @@
     - nginx
     - foreman
     - foreman-plugins
+    - delorean
+    - delorean-deps
 
 - name: Pushing local.repo to nginx
   template:
