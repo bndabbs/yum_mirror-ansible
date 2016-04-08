@@ -24,6 +24,9 @@
     - rhscl-ruby193-epel-7-x86_64.repo
     - docker.repo
     - delorean.repo
+    - ceph.repo
+    - elasticsearch.repo
+    - mariadb.repo
 
 - name: Enabling additional repos in YUM
   yum:
@@ -91,6 +94,10 @@
     - foreman-plugins
     - delorean
     - delorean-deps
+    - ceph/x86_64
+    - ceph/noarch
+    - elasticsearch
+    - mariadb
 
 - name: Sync repositories
   command: >
@@ -120,6 +127,10 @@
     - { repo: 'foreman-plugins', path: 'foreman-plugins' }
     - { repo: 'delorean', path: 'delorean' }
     - { repo: 'delorean-deps', path: 'delorean-deps' }
+    - { repo: 'ceph-x86_64', path: 'ceph/x86_64' }
+    - { repo: 'ceph-noarch', path: 'ceph/noarch' }
+    - { repo: 'elasticsearch', path: 'elasticsearch' }
+    - { repo: 'mariadb', path: 'mariadb' }
 
 - name: Update repo metadata
   command: >
@@ -147,6 +158,10 @@
     - foreman-plugins
     - delorean
     - delorean-deps
+    - ceph/x86_64
+    - ceph/noarch
+    - elasticsearch
+    - mariadb
 
 - name: Pushing local.repo to nginx
   template:
