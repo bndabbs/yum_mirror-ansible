@@ -129,7 +129,7 @@
     - { repo: 'delorean-deps', path: 'delorean-deps' }
     - { repo: 'ceph-x86_64', path: 'ceph/x86_64' }
     - { repo: 'ceph-noarch', path: 'ceph/noarch' }
-    - { repo: 'elasticsearch', path: 'elasticsearch' }
+    - { repo: 'elasticsearch-2.x', path: 'elasticsearch' }
     - { repo: 'mariadb', path: 'mariadb' }
 
 - name: Update repo metadata
