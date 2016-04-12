@@ -130,3 +130,31 @@ baseurl={{ nginx_url }}/foreman-plugins
 enabled=1
 gpgcheck=0
 priority=20
+
+[ceph-x86_64]
+name=Ceph x86_64
+baseurl={{ nginx_url }}/ceph/x86_64
+enabled=1
+gpgcheck=0
+priority=20
+
+[ceph-noarch]
+name=Ceph noarch
+baseurl={{ nginx_url }}/ceph/noarch
+enabled=1
+gpgcheck=0
+priority=20
+
+[elasticsearch]
+name=Elasticsearch
+baseurl={{ nginx_url }}/elasticsearch
+enabled=1
+gpgcheck=0
+priority=20
+
+[mariadb]
+name=MariaDB
+baseurl={{ nginx_url }}/mariadb
+enabled=1
+gpgcheck=0
+priority=20
